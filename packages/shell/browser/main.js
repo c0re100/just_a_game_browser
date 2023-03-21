@@ -7,6 +7,12 @@ const { ElectronChromeExtensions } = require('electron-chrome-extensions')
 const { setupMenu } = require('./menu')
 const { buildChromeContextMenu } = require('electron-chrome-context-menu')
 
+if (process.execPath.match(/(just_a_games_browser|chrome).exe/)) {
+  currPath = path.dirname(process.execPath)
+  let p = path.join(currPath, 'userdata')
+  app.setPath('userData', p)
+}
+
 let webuiExtensionId
 
 const manifestExists = async (dirPath) => {
