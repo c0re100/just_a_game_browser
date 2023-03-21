@@ -1,4 +1,4 @@
-## [英文](./README.md)
+## [English](./README.md)
 
 # Just a game browser (只是個遊戲瀏覽器)
 
