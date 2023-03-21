@@ -1,22 +1,47 @@
 {
-  "name": "shell",
-  "version": "1.0.0",
+  "name": "just_a_games_browser",
+  "version": "0.0.1",
   "description": "Minimum Viable Browser shell built on Electron.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "electron .",
-    "test": "npm run build"
+    "test": "npm run build",
+    "dist": "webpack && electron-builder"
   },
   "license": "GPL-3.0",
   "author": "Samuel Maddock <sam@samuelmaddock.com>",
   "private": true,
   "dependencies": {
-    "electron": "^22.0.2",
     "electron-chrome-context-menu": "^1.0.1",
     "electron-chrome-extensions": "^3.4.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "electron": "22.3.3",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "productName": "just_a_games_browser",
+    "appId": "just.a.game.browser",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "*.js",
+      "*.ts",
+      "browser",
+      "icon.ico"
+    ],
+    "extraFiles": [],
+    "win": {
+      "icon": "icon.ico"
+    },
+    "electronDownload": {
+      "mirror": "https://github.com/c0re100/electron/releases/download/v",
+      "cache": "./electron_cache"
+    },
+    "asar": false,
+    "afterPack": "./script/after.js"
   }
 }

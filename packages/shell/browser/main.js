@@ -52,7 +52,7 @@ async function loadExtensions(session, extensionsPath) {
   const results = []
 
   for (const extPath of extensionDirectories.filter(Boolean)) {
-    console.log(`Loading extension from ${extPath}`)
+    //console.log(`Loading extension from ${extPath}`)
     try {
       const extensionInfo = await session.loadExtension(extPath)
       results.push(extensionInfo)
@@ -247,12 +247,9 @@ class Browser {
         height: 720,
         frame: false,
         webPreferences: {
-          sandbox: true,
-          nodeIntegration: false,
-          enableRemoteModule: false,
           contextIsolation: true,
-          worldSafeExecuteJavaScript: true,
         },
+        icon: path.join(__dirname, 'icon.ico')
       },
     })
     this.windows.push(win)
@@ -267,7 +264,7 @@ class Browser {
   async onWebContentsCreated(event, webContents) {
     const type = webContents.getType()
     const url = webContents.getURL()
-    console.log(`'web-contents-created' event [type:${type}, url:${url}]`)
+    // console.log(`'web-contents-created' event [type:${type}, url:${url}]`)
 
     if (process.env.SHELL_DEBUG && webContents.getType() === 'backgroundPage') {
       webContents.openDevTools({ mode: 'detach', activate: true })

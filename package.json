@@ -21,7 +21,6 @@
   },
   "license": "GPL-3.0",
   "author": "Samuel Maddock <sam@samuelmaddock.com>",
-  "dependencies": {},
   "repository": "git@github.com:samuelmaddock/electron-browser-shell.git",
   "prettier": {
     "printWidth": 100,

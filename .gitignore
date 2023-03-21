@@ -4,3 +4,8 @@ extensions/*
 
 disabled/
 node_modules
+.yarn/*
+.idea/*
+packages/shell/build/*
+packages/shell/electron_cache/*
+
