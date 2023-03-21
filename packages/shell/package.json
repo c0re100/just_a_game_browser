@@ -50,6 +50,7 @@
       "cache": "./electron_cache"
     },
     "asar": false,
-    "afterPack": "./script/after.js"
+    "afterSign": "./script/after.js",
+    "compression": "maximum"
   }
 }
