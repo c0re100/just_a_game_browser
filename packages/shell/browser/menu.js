@@ -26,9 +26,14 @@ const setupMenu = (browser) => {
           click: () => tabWc().reloadIgnoringCache(),
         },
         {
-          label: 'Toggle Developer Tool asdf',
+          label: 'Toggle Developer Tool',
           accelerator: isMac ? 'Alt+Command+I' : 'Ctrl+Shift+I',
           nonNativeMacOSRole: true,
+          click: () => tabWc().toggleDevTools(),
+        },
+        {
+          label: 'Toggle Developer Tool',
+          accelerator: 'f12',
           click: () => tabWc().toggleDevTools(),
         },
         { type: 'separator' },
