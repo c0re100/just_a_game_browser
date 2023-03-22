@@ -20,6 +20,12 @@ const setupMenu = (browser) => {
           click: () => tabWc().reload(),
         },
         {
+          label: 'Reload',
+          accelerator: 'f5',
+          nonNativeMacOSRole: true,
+          click: () => tabWc().reload(),
+        },
+        {
           label: 'Force Reload',
           accelerator: 'Shift+CmdOrCtrl+R',
           nonNativeMacOSRole: true,
