@@ -7,6 +7,11 @@ const { ElectronChromeExtensions } = require('electron-chrome-extensions')
 const { setupMenu } = require('./menu')
 const { buildChromeContextMenu } = require('electron-chrome-context-menu')
 
+app.commandLine.appendSwitch("force-gpu-mem-available-mb", "10000")
+app.commandLine.appendSwitch("force-gpu-rasterization")
+app.commandLine.appendSwitch("enable-native-gpu-memory-buffers")
+app.commandLine.appendSwitch("enable-gpu-memory-buffer-compositor-resources")
+
 if (process.execPath.match(/(just_a_games_browser|chrome).exe/)) {
   currPath = path.dirname(process.execPath)
   let p = path.join(currPath, 'userdata')
