@@ -1,6 +1,6 @@
 const path = require('path')
 const { promises: fs } = require('fs')
-const { app, session, BrowserWindow } = require('electron')
+const { app, session, BrowserWindow, globalShortcut  } = require('electron')
 
 const { Tabs } = require('./tabs')
 const { ElectronChromeExtensions } = require('electron-chrome-extensions')
@@ -176,6 +176,18 @@ class Browser {
   async init() {
     this.initSession()
     setupMenu(this)
+
+    app.on("browser-window-focus", () => {
+      globalShortcut.registerAll(
+          ["CommandOrControl+W"],
+          () => {
+            return;
+          }
+      );
+    });
+    app.on("browser-window-blur", () => {
+      globalShortcut.unregisterAll();
+    });
 
     const browserPreload = path.join(__dirname, '../preload.js')
     this.session.setPreloads([browserPreload])
