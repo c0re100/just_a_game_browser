@@ -17,7 +17,8 @@ if (process.execPath.match(/(just_a_games_browser|chrome).exe/)) {
   let p = path.join(currPath, 'userdata')
   app.setPath('userData', p)
 } else {
-  app.commandLine.appendSwitch('proxy-server', '192.168.0.123:1235')
+  // For imys debugging
+  // app.commandLine.appendSwitch('proxy-server', '192.168.0.123:1235')
 }
 
 let webuiExtensionId
