@@ -21,8 +21,11 @@ Because it's not just for DMM games, any game that uses the Unity web framework 
 That's why it's called __Just a game browser__.
 
 ### Preload Extensions
-   1. uBlock
-   2. Stylus
+   1. uBlock v1.47.4
+   2. Stylus v1.5.20
+   3. Violentmonkey v2.12.8
+
+**PLEASE don't upgrade any extension, the newer version may not work as expected.**
 
 ### License
 

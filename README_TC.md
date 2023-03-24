@@ -21,8 +21,11 @@
 這就是為什麼會叫做 __Just a game browser (只是個遊戲瀏覽器)__.
 
 ### 預載擴充
-   1. uBlock
-   2. Stylus
+   1. uBlock v1.47.4
+   2. Stylus v1.5.20
+   3. Violentmonkey v2.12.8
+
+**請不要更新任何一款擴充套件，新版本可能無法正常使用**
 
 ### License
 
