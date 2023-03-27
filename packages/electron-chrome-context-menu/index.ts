@@ -1,4 +1,4 @@
-import { app, BrowserWindow, clipboard, Menu, MenuItem } from 'electron'
+import {app, BrowserWindow, clipboard, Menu, MenuItem, nativeImage} from 'electron'
 
 const LABELS = {
   openInNewTab: (type: 'link' | Electron.ContextMenuParams['mediaType']) =>
@@ -99,7 +99,7 @@ export const buildChromeContextMenu = (opts: ChromeContextMenuOptions): Menu => 
       },
     })
     appendSeparator()
-  } else if (params.mediaType !== 'none') {
+  } else if (params.mediaType !== 'none' && params.mediaType !== 'canvas') {
     // TODO: Loop, Show controls
     append({
       label: labels.openInNewTab(params.mediaType),
@@ -111,6 +111,51 @@ export const buildChromeContextMenu = (opts: ChromeContextMenuOptions): Menu => 
       label: labels.copyAddress(params.mediaType),
       click: () => {
         clipboard.writeText(params.srcURL)
+      },
+    })
+    appendSeparator()
+  } else if (params.mediaType === 'canvas') {
+    append({
+      label: 'Copy Image',
+      click: () => {
+        const copy = `function takeScreenshot() {
+    let canvas = document.querySelector('#unity-canvas') // Unity canvas
+    if (!canvas) canvas = document.querySelector('#GameCanvas') // Cocos2d canvas
+    if (!canvas) return ''
+    return canvas.toDataURL("image/png")
+}
+takeScreenshot()`
+
+        params.frame.executeJavaScript(copy).then((result) => {
+          if (typeof result === "string") {
+            const b64 = nativeImage.createFromDataURL(result)
+            clipboard.writeImage(b64)
+          }
+        })
+      },
+    })
+    append({
+      label: 'Save Image',
+      click: () => {
+        const save = `function saveImage() {
+    let canvas = document.querySelector('#unity-canvas') // Unity canvas
+    if (!canvas) canvas = document.querySelector('#GameCanvas') // Cocos2d canvas
+    if (!canvas) return
+    canvas.toBlob((blob) => {
+    const a = document.createElement('a');
+    a.download = 'jagb_screenshot_' + new Date().toLocaleString("en-CA", {hour12: false, timeZone: "Asia/Hong_Kong"}).
+        replace(/-/g, '_').
+        replace(/, /g, '_').
+        replace(/:/g, '_') + '.png';
+        a.href = URL.createObjectURL(blob)
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+    })
+}
+saveImage()`
+
+        params.frame.executeJavaScript(save)
       },
     })
     appendSeparator()
