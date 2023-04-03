@@ -121,6 +121,7 @@ export const buildChromeContextMenu = (opts: ChromeContextMenuOptions): Menu => 
         const copy = `function takeScreenshot() {
     let canvas = document.querySelector('#unity-canvas') // Unity canvas
     if (!canvas) canvas = document.querySelector('#GameCanvas') // Cocos2d canvas
+    if (!canvas) canvas = document.querySelector('canvas') // First canvas fallback
     if (!canvas) return ''
     return canvas.toDataURL("image/png")
 }
@@ -140,6 +141,7 @@ takeScreenshot()`
         const save = `function saveImage() {
     let canvas = document.querySelector('#unity-canvas') // Unity canvas
     if (!canvas) canvas = document.querySelector('#GameCanvas') // Cocos2d canvas
+    if (!canvas) canvas = document.querySelector('canvas') // First canvas fallback
     if (!canvas) return
     canvas.toBlob((blob) => {
     const a = document.createElement('a');
