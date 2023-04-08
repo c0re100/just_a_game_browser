@@ -7,9 +7,13 @@ import { WindowsAPI } from './windows'
 const debug = require('debug')('electron-chrome-extensions:tabs')
 
 const validateExtensionUrl = (url: string, extension: Electron.Extension) => {
-  // Convert relative URLs to absolute if needed
+  // Add HTTP protocol if needed
   try {
-    url = new URL(url, extension.url).href
+    if (extension.name == 'WebUI' && (!url.startsWith("http://") || !url.startsWith("https://"))) {
+      url = "http://" + url
+    } else {
+      url = new URL(url, extension.url).href
+    }
   } catch (e) {
     throw new Error('Invalid URL')
   }
