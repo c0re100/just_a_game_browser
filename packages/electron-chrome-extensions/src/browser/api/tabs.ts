@@ -6,10 +6,20 @@ import { WindowsAPI } from './windows'
 
 const debug = require('debug')('electron-chrome-extensions:tabs')
 
+function isValidHttpUrl(input: string) {
+  let url;
+  try {
+    url = new URL(input);
+  } catch (e) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
 const validateExtensionUrl = (url: string, extension: Electron.Extension) => {
   // Add HTTP protocol if needed
   try {
-    if (extension.name == 'WebUI' && (!url.startsWith("http://") || !url.startsWith("https://"))) {
+    if (extension.name == 'WebUI' && (!isValidHttpUrl(url))) {
       url = "http://" + url
     } else {
       url = new URL(url, extension.url).href
