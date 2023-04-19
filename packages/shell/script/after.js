@@ -8,8 +8,8 @@ exports.default = async function (context) {
         unpack_dir = 'win-unpacked'
     } else if (env === 'linux') {
         unpack_dir = 'linux-unpacked'
-    } else if (env === 'mac') {
-        unpack_dir = 'mac-unpacked'
+    } else if (env === 'darwin') {
+        unpack_dir = 'darwin'
     }
 
     if (unpack_dir) {
@@ -20,8 +20,6 @@ exports.default = async function (context) {
         fs.cpSync('../../extensions/Violentmonkey', './build/' + unpack_dir + '/extensions/Violentmonkey', {recursive: true})
         if (env === 'win32') {
             fs.renameSync('./build/' + unpack_dir + '/just_a_games_browser.exe', './build/' + unpack_dir + '/chrome.exe')
-        } else {
-            fs.renameSync('./build/' + unpack_dir + '/just_a_games_browser', './build/' + unpack_dir + '/chrome')
         }
     }
 }

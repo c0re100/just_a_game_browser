@@ -8,7 +8,8 @@
     "start": "electron .",
     "test": "npm run build",
     "dist": "webpack && electron-builder",
-    "dist-linux": "webpack && electron-builder --linux"
+    "dist-linux": "webpack && electron-builder --linux",
+    "dist-mac": "webpack && electron-builder --mac"
   },
   "license": "GPL-3.0",
   "author": "c0re100 <c0re@husky.dev>",
@@ -52,6 +53,17 @@
       "target": [
         {
           "target": "7z",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "icon.ico",
+      "target": [
+        {
+          "target": "zip",
           "arch": [
             "x64"
           ]
