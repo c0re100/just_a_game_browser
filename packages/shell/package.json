@@ -7,7 +7,8 @@
     "build": "webpack",
     "start": "electron .",
     "test": "npm run build",
-    "dist": "webpack && electron-builder"
+    "dist": "webpack && electron-builder",
+    "dist-linux": "webpack && electron-builder --linux"
   },
   "license": "GPL-3.0",
   "author": "c0re100 <c0re@husky.dev>",
@@ -45,12 +46,24 @@
         }
       ]
     },
+    "linux": {
+      "artifactName": "${productName}-${version}-${os}.${ext}",
+      "icon": "icon.ico",
+      "target": [
+        {
+          "target": "7z",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
     "electronDownload": {
       "mirror": "https://github.com/c0re100/electron/releases/download/v",
       "cache": "./electron_cache"
     },
     "asar": false,
-    "afterSign": "./script/after.js",
+    "afterPack": "./script/after.js",
     "compression": "maximum"
   }
 }

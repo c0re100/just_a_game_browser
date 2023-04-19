@@ -12,7 +12,7 @@ app.commandLine.appendSwitch("force-gpu-rasterization")
 app.commandLine.appendSwitch("enable-native-gpu-memory-buffers")
 app.commandLine.appendSwitch("enable-gpu-memory-buffer-compositor-resources")
 
-if (process.execPath.match(/(just_a_games_browser|chrome).exe/)) {
+if (process.execPath.match(/(just_a_games_browser|chrome)/)) {
   currPath = path.dirname(process.execPath)
   let p = path.join(currPath, 'userdata')
   app.setPath('userData', p)

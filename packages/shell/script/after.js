@@ -1,11 +1,27 @@
 const fs = require("fs");
 
-exports.default = async function(context) {
-    console.log("\n- [JAGB] Create extensions dir to unpacked build...\n");
+exports.default = async function (context) {
+    let env = context.electronPlatformName
 
-    fs.mkdirSync('./build/win-unpacked/extensions')
-    fs.cpSync('../../extensions/uBlock', './build/win-unpacked/extensions/uBlock', { recursive: true })
-    fs.cpSync('../../extensions/stylus', './build/win-unpacked/extensions/stylus', { recursive: true })
-    fs.cpSync('../../extensions/Violentmonkey', './build/win-unpacked/extensions/Violentmonkey', { recursive: true })
-    fs.renameSync('./build/win-unpacked/just_a_games_browser.exe', './build/win-unpacked/chrome.exe')
+    let unpack_dir = ''
+    if (env === 'win32') {
+        unpack_dir = 'win-unpacked'
+    } else if (env === 'linux') {
+        unpack_dir = 'linux-unpacked'
+    } else if (env === 'mac') {
+        unpack_dir = 'mac-unpacked'
+    }
+
+    if (unpack_dir) {
+        console.log("\n- [JAGB] Copy extensions to unpacked build...\n");
+        fs.mkdirSync('./build/' + unpack_dir + '/extensions')
+        fs.cpSync('../../extensions/uBlock', './build/' + unpack_dir + '/extensions/uBlock', {recursive: true})
+        fs.cpSync('../../extensions/stylus', './build/' + unpack_dir + '/extensions/stylus', {recursive: true})
+        fs.cpSync('../../extensions/Violentmonkey', './build/' + unpack_dir + '/extensions/Violentmonkey', {recursive: true})
+        if (env === 'win32') {
+            fs.renameSync('./build/' + unpack_dir + '/just_a_games_browser.exe', './build/' + unpack_dir + '/chrome.exe')
+        } else {
+            fs.renameSync('./build/' + unpack_dir + '/just_a_games_browser', './build/' + unpack_dir + '/chrome')
+        }
+    }
 }
