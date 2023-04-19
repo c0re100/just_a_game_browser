@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Just a game browser</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
       :root {
         /* https://colorhunt.co/palette/161920 */
@@ -204,7 +206,7 @@
               <span class="title"></span>
               <div class="controls">
                 <button class="control audio" disabled>🔊</button>
-                <button class="control close">🗙</button>
+                <button class="control close"><i class="fa-sharp fa-solid fa-xmark" style="color: #ff0000;"></i></button>
               </div>
             </li>
           </template>
@@ -212,9 +214,9 @@
         <button id="createtab">+</button>
         <div class="app-drag"></div>
         <div class="window-controls">
-          <button id="minimize" class="control">🗕</button>
-          <button id="maximize" class="control">🗖</button>
-          <button id="close" class="control">🗙</button>
+          <button id="minimize" class="control"><i class="fa-solid fa-window-minimize fa-2xs"></i></button>
+          <button id="maximize" class="control"><i class="fa-solid fa-window-maximize fa-2xs"></i></button>
+          <button id="close" class="control"><i class="fa-sharp fa-solid fa-xmark" style="color: #ff0000;"></i></button>
         </div>
       </div>
       <div class="toolbar">
