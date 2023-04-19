@@ -25,6 +25,7 @@
   "build": {
     "productName": "just_a_games_browser",
     "appId": "just.a.game.browser",
+    "artifactName": "${productName}-${version}-${os}.${ext}",
     "directories": {
       "output": "build"
     },
@@ -47,7 +48,6 @@
       ]
     },
     "linux": {
-      "artifactName": "${productName}-${version}-${os}.${ext}",
       "icon": "icon.ico",
       "target": [
         {
