@@ -1,6 +1,6 @@
 {
   "name": "just_a_games_browser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Minimum Viable Browser shell built on Electron.",
   "main": "index.js",
   "scripts": {
