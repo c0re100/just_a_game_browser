@@ -19,7 +19,7 @@ function isValidHttpUrl(input: string) {
 const validateExtensionUrl = (url: string, extension: Electron.Extension) => {
   // Add HTTP protocol if needed
   try {
-    if (extension.name == 'WebUI' && (!isValidHttpUrl(url))) {
+    if (extension.name === 'WebUI' && !url.startsWith('chrome-extension://') && (!isValidHttpUrl(url))) {
       url = "http://" + url
     } else {
       url = new URL(url, extension.url).href
