@@ -38,6 +38,8 @@
     ],
     "extraFiles": [],
     "win": {
+      "artifactName": "${productName}-${version}-${os}.${ext}",
+      "executableName": "chrome",
       "icon": "icon.ico",
       "target": [
         {
