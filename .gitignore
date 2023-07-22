@@ -9,3 +9,4 @@ node_modules
 packages/shell/build/*
 packages/shell/electron_cache/*
 
+userdata/*

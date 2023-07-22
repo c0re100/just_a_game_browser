@@ -13,6 +13,8 @@ if (process.execPath.match(/(just_a_games_browser|chrome)/)) {
   app.setPath('userData', p)
 } else {
   // For imys debugging
+  let p = path.join(__dirname.replace('\\packages\\shell\\browser', ''), 'userdata')
+  app.setPath('userData', p)
   app.commandLine.appendSwitch('proxy-server', '127.0.0.1:5678')
 }
 
