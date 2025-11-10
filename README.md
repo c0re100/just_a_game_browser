@@ -1,3 +1,5 @@
+# This repo has been archived and migrated to [Hentaium](https://github.com/Hentaium/Hentaium).
+
 ## [中文](./README_TC.md)
 
 # Just a game browser

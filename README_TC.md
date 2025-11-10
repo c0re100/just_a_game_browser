@@ -1,3 +1,5 @@
+# 此倉庫已封存並遷移至[Hentaium](https://github.com/Hentaium/Hentaium)。
+
 ## [English](./README.md)
 
 # Just a game browser (只是個遊戲瀏覽器)
